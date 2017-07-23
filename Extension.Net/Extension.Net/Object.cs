@@ -28,6 +28,8 @@ namespace Extension.Net
 
                 if (typeof(T) == typeof(Guid))
                     return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(obj.ToString());
+                if (typeof(T) == typeof(bool))
+                    return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(obj.ToString() == "0" ? "false" : "true");
                 else
                     return (T)SystemConvert.ChangeType(obj, typeof(T));
             }
