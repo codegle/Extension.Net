@@ -11,6 +11,7 @@ namespace Extension.Net.Test
             ConvertTest();
             NullTest();
             DataSetTest();
+            PatternTest();
             DateTimeFormatTest();
         }
 
@@ -68,6 +69,12 @@ namespace Extension.Net.Test
             User user = row.ToModel<User>(ToUser);
             List<User> users = table.ToModels<User>(ToUser);
             users = set.ToModels<User>(ToUser);
+        }
+
+        private static void PatternTest()
+        {
+            string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            bool boolean = "fanwensheng@foxmailcom".IsPattern(pattern);
         }
 
         private static void DateTimeFormatTest()
