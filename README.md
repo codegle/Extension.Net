@@ -1,5 +1,6 @@
 # Extension.Net
 提供了常用数据类型转换、常用方法封装等。
+注意：所有的转换均可设置默认值，即当转换的Obj为空或转换异常时，会返回该默认值。
 
     public class Program
     {
