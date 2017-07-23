@@ -10,13 +10,14 @@
             ConvertTest();
             NullTest();
             DataSetTest();
+            PatternTest();
             DateTimeFormatTest();
         }
 
         private static void ConvertTest()
         {
             int number = "12".To<int>();                // Returns: 12
-            number = "DefaultValue".To<int>(-1);        // Returns: -1 (Default Value)
+            number = "DefaultValue".To<int>(-1);        // Returns: -1
             number = 3.14f.To<int>();                   // Returns: 3
 
             float numeric1 = "3.14".To<float>();        // Returns: 3.14
@@ -67,6 +68,12 @@
             User user = row.ToModel<User>(ToUser);
             List<User> users = table.ToModels<User>(ToUser);
             users = set.ToModels<User>(ToUser);
+        }
+
+        private static void PatternTest()
+        {
+            string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            bool boolean = "fanwensheng@foxmailcom".IsPattern(pattern);
         }
 
         private static void DateTimeFormatTest()
