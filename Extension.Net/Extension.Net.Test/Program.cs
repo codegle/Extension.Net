@@ -27,7 +27,8 @@ namespace Extension.Net.Test
             bool boolean = 1.To<bool>();                // Returns: true
             boolean = "0".To<bool>();                   // Returns: false
             boolean = "1".To<bool>();                   // Returns: true
-            boolean = "2".To<bool>();                   // Returns: true
+            boolean = "2".To<bool>();                   // Returns: false
+            boolean = "false".To<bool>();               // Returns: false
 
             string text = "EAF90998-1F75-4858-B139-90CD6407BF48";
             Guid guid = text.To<Guid>();                // Returns: Guid("EAF90998-1F75-4858-B139-90CD6407BF48")

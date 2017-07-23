@@ -27,16 +27,36 @@ namespace Extension.Net
                     return (T)obj;
 
                 if (typeof(T) == typeof(Guid))
-                    return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(obj.ToString());
+                    return obj.ToGuid<T>();
+
                 if (typeof(T) == typeof(bool))
-                    return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(obj.ToString() == "0" ? "false" : "true");
-                else
-                    return (T)SystemConvert.ChangeType(obj, typeof(T));
+                    return obj.ToBoolean<T>();
+
+                return (T)SystemConvert.ChangeType(obj, typeof(T));
             }
             catch (Exception)
             {
                 return defaultValue;
             }
+        }
+
+        private static T ToGuid<T>(this object obj)
+        {
+            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+            return (T)converter.ConvertFromInvariantString(obj.ToString());
+        }
+
+        private static T ToBoolean<T>(this object obj, T defaultValue = default(T))
+        {
+            string text = obj.ToString();
+            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+            if (text == "true" || text == "1")
+                return (T)converter.ConvertFromInvariantString("true");
+
+            if (text == "false" || text == "0")
+                return (T)converter.ConvertFromInvariantString("false");
+
+            return defaultValue;
         }
     }
 }
