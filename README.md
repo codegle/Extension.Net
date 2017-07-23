@@ -1,6 +1,6 @@
 # Extension.Net
 提供了常用数据类型转换、常用方法封装等：  
-**1）所有的扩展方法在使用时无需判断NULL或DBNull；
+**1）所有的扩展方法在使用时无需判断NULL或DBNull；  
 2）所有的类型转换方法均提供默认值功能，当转换的对象为空或转换异常时，会返回该默认值。**
 
     public class Program
@@ -16,7 +16,7 @@
         private static void ConvertTest()
         {
             int number = "12".To<int>();                // Returns: 12
-            **number = "DefaultValue".To<int>(-1);        // Returns: -1**
+            number = "DefaultValue".To<int>(-1);        // Returns: -1 (Default Value)
             number = 3.14f.To<int>();                   // Returns: 3
 
             float numeric1 = "3.14".To<float>();        // Returns: 3.14
