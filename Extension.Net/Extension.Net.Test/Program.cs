@@ -18,7 +18,7 @@ namespace Extension.Net.Test
         private static void ConvertTest()
         {
             int number = "12".To<int>();                // Returns: 12
-            number = "DefaultValue".To<int>(-1);        // Returns: -1
+            number = "TestDefaultValue".To<int>(-1);    // Returns: -1 (The default value)
             number = 3.14f.To<int>();                   // Returns: 3
 
             float numeric1 = "3.14".To<float>();        // Returns: 3.14
