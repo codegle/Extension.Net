@@ -86,7 +86,7 @@ namespace Extension.Net.Test
         private static User ToUser(DataRow row)
         {
             User user = new User();
-            // Converts properties...
+            // Converts from DataRow to User
             return user;
         }
     }
