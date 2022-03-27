@@ -74,7 +74,7 @@
         private static void PatternTest()
         {
             string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            bool boolean = "fanwensheng@foxmailcom".IsPattern(pattern);
+            bool boolean = "hello@world.com".IsPattern(pattern);
         }
 
         private static void DateTimeFormatTest()
